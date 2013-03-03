@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+<section id="content">
+    <div class="subContent">
+        <h2>Search for an user</h2>
+        <form action="#" method="post" accept-charset="utf-8" id="search">
+            <div class="form">
+                <div class="row">
+                    <label>Question:</label>
+                    <input id="id_question_0" name="question_0" required autocomplete="off" placeholder="Enter question text">
+                    <span class="errors"></span>
+                </div>
+            </div>
+        </form>
+        <br><br>
+        <button id="save_question_button">Search</button>
+    </div>
+    <br><br>
+</section>
+<script type="text/javascript">
+    $("input#id_question_0").focus();
+    $("#save_question_button").click(saveQuestion)
+    $("#search").submit(saveQuestion)
+    search();
+</script>
+{% endblock %}
