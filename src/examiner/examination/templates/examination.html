@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}Exam{% endblock %}
+
+{% block content %}
+<section id="content">
+    <div class="subContent">
+        <h2>Exam</h2>
+        <div id="container_form">
+            {% if already_answered %}
+            <h2>You have already answered</h2>
+            {% else %}
+            <button id="save_question_button" class="save_answer_button">Save</button>
+            <br><br>
+            {% for question in questions %}
+            <form action="#" method="post" accept-charset="utf-8" id="save_answer" class="save_answer_form">
+                <div class="form">
+                    <div class="row">
+                        <span>{{ question.text }}</span>
+                        <input type="hidden" value="{{ question.key.urlsafe }}" name="question">
+                    </div>
+                    <div class="row">
+                        <label class="answer_label">
+                            <a href="#" class="tooltip nodecoration">
+                                Answer
+                                <span>{{ question.help_text }}</span>
+                            </a>
+                        </label>
+                        <textarea id="id_answer_{{ forloop.counter }}" name="text" autocomplete="off" required="" placeholder="Answer the question"></textarea>
+                        <span class="errors"></span>
+                    </div>
+                </div>
+            </form>
+            {% empty %}
+            <h2>No questions prepared yet!</h2>
+            {% endfor %}
+            <br><br>
+            <button id="save_answer_button" class="save_answer_button">Save</button>
+            {% endif %}
+        </div>
+    </div>
+    <br><br>
+</section>
+<script type="text/javascript">
+    $("textarea#id_answer_1").focus();
+    $(".save_answer_button").click(saveResponse);
+    $("form.save_answer").submit(saveResponse);
+    $(".tooltip").click(function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        return false;
+    });
+</script>
+{% endblock %}

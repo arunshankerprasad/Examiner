@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}Questionaire{% endblock %}
+
+{% block content %}
+<section id="content">
+    <div class="subContent" id="questionaire_container_form">
+        {% if questionaire %}
+        <h2>Questionaire already prepared</h2>
+        <br>
+        <button id="review_answers_button" class="review_answers_button">Review the responses</button>
+        <div id="responses"></div>
+        {% else %}
+        <h2>Prepare Your Questionaire</h2>
+        <button id="id_add_another_question_button" class="add_another_question_button">Add another question</button>
+        <button id="save_question_button" class="save_question_button">Save</button>
+        <br><br>
+        <div id="save_question" class="fl">
+            <div class="form" id="question_set_0">
+                <form action="#" method="post" accept-charset="utf-8" class="save_question_form">
+                    <div class="row">
+                        <label>Question</label>
+                        <input type="text" id="id_question_0" name="text" required autocomplete="off" placeholder="Enter question text">
+                        <span class="errors"></span>
+                    </div>
+                    <div class="row">
+                        <label>Help Text</label>
+                        <textarea id="id_help_text_0" name="help_text" autocomplete="off" placeholder="Enter help text"></textarea>
+                        <span class="errors"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br><br>
+        <button id="id_add_another_question_button" class="add_another_question_button">Add another question</button>
+        <button id="save_question_button" class="save_question_button">Save</button>
+        {% endif %}
+    </div>
+    <br><br>
+</section>
+<script type="text/javascript">
+    $("input#id_question_0").focus();
+    $(".save_question_button").click(saveQuestion);
+    $(".add_another_question_button").click(addAnotherQuestion);
+    $(".review_answers_button").click(reviewResponses);
+    $("form.save_question_form").submit(saveQuestion);
+</script>
+{% endblock %}
