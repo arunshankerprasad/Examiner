@@ -44,7 +44,7 @@ def questionaire_save(request):
     return HttpResponse(dumps(r), mimetype='application/json')
 
 
-@must_be_one_of_these_users(['arunshankerprasad@gmail.com', 'test@example.com'])
+@must_be_one_of_these_users(settings.TEACHERS)
 @login_required
 def questionaire_responses(request):
     r = []

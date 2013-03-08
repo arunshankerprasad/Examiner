@@ -155,5 +155,5 @@ LOGGING = {
 }
 
 # Define all teachers here
-TEACHERS = ['arunshankerprasad@gmail.com', 'test@example.com', 'asp@asplabs.in']
+TEACHERS = ['arunshankerprasad@gmail.com', 'test@example.com', 'asp@asplabs.in', 'ajithwinds@gmail.com', 'jojurajan@gmail.com']
 
