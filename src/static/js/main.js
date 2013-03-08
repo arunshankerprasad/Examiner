@@ -67,6 +67,7 @@ function reviewResponses() {
     $(this).remove();
     $.get('/questionaire/responses', {}, function(responses) {
         if(responses.length > 0) {
+            $('div#responses').html('');
             $(responses).each(function (i, answer){
                 var html = '<div class="container"><form action="#" class="responses_form"><div class="responses">\
                 <input type="hidden" value="' + answer.key + '">\
@@ -85,7 +86,7 @@ function reviewResponses() {
                         html += '<br><br><span>Wrong</span>';
                     }
                 }
-                $('div#responses').html('').append(html);
+                $('div#responses').append(html);
 
                 var func = function (e, that, is_correct) {
                     var prv_text = that.html();
